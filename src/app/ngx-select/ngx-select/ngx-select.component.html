@@ -1,0 +1,14 @@
+<div class="dropdown">
+    <button class="btn btn-block selectBox dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+   {{(SelectedValue.length == 0)?Configure.placeholder:SelectedValue[Configure.optionKey]}}
+  </button>
+    <div class="dropdown-menu selectMenu" aria-labelledby="dropdownMenuButton">
+        <div class="searchBox" *ngIf="Configure.search">
+            <input type="text" class="form-control" placeholder="Search" style="border: none;">
+            <hr style="margin: 0;">
+        </div>
+        <ul class="selectList">
+            <li class="dropdown-item" *ngFor="let i of List" (click)="getSelected(i)">{{i[Configure.optionKey]}}</li>
+        </ul>
+    </div>
+</div>
