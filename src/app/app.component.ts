@@ -15,7 +15,7 @@ export class AppComponent {
   ]
   Config:any={
     optionKey:"name",
-    search:false
+    search:true
   }
   SelectedValue:any;
 

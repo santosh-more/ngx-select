@@ -4,7 +4,7 @@
   </button>
     <div class="dropdown-menu selectMenu" aria-labelledby="dropdownMenuButton">
         <div class="searchBox" *ngIf="Configure.search">
-            <input type="text" class="form-control" placeholder="Search" style="border: none;">
+            <input type="text" class="form-control" (input)="search($event.target.value)" placeholder="Search" style="border: none;">
             <hr style="margin: 0;">
         </div>
         <ul class="selectList">
