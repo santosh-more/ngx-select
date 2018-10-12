@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Http } from '@angular/http';
 
 @Component({
   selector: 'app-root',
@@ -6,23 +7,28 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
-  List:Array<any>=[
-    {name:"Santosh More", id:"10"},
-    { name: "Minal Bansal", id: "11"},
-    { name: "Sushant Ghatage", id: "12"},
-    { name: "Bupesh Moyal", id: "13"},
-  ]
-  Config:any={
-    optionKey:"name",
-    search:true
+  constructor(public http: Http) {
+    this.getCountryList();
   }
-  SelectedValue:any;
+  title = 'app';
+  List: Array<any> = [];
+  Config: any = {
+    optionKey: "name",
+    search: true,
+    limitTo: 5
+  }
+  SelectedValue: any;
 
-  show(){
+  show() {
     console.log(this.SelectedValue);
   }
-  onSelection($event){
-    console.log("Event :",$event);
+  onSelection($event) {
+    console.log("Event :", $event);
+  }
+  getCountryList() {
+    this.http.get('assets/data/country.json')
+      .subscribe(res => {
+        this.List = JSON.parse(res['_body']);
+      });
   }
 }

@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { NgxSelectModule } from "./ngx-select/ngx-select.module";
 @NgModule({
@@ -8,7 +9,8 @@ import { NgxSelectModule } from "./ngx-select/ngx-select.module";
   ],
   imports: [
     BrowserModule,
-    NgxSelectModule
+    NgxSelectModule,
+    HttpModule
   ],
   providers: [],
   bootstrap: [AppComponent]

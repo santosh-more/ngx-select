@@ -41,4 +41,8 @@
     padding: 0;
     list-style: none;
     margin-bottom: 0;
+    max-height: 14rem;
+    height: auto;
+    overflow: hidden;
+    overflow-y: auto;
 }

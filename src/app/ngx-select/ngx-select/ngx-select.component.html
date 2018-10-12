@@ -4,11 +4,11 @@
   </button>
     <div class="dropdown-menu selectMenu" aria-labelledby="dropdownMenuButton">
         <div class="searchBox" *ngIf="Configure.search">
-            <input type="text" class="form-control" (input)="search($event.target.value)" placeholder="Search" style="border: none;">
-            <hr style="margin: 0;">
+            <input type="text" class="form-control" (input)="search($event.target.value)" placeholder="{{Configure.searchPlaceholder}}" style=" border: none; ">
+            <hr style="margin: 0; ">
         </div>
-        <ul class="selectList">
-            <li class="dropdown-item" *ngFor="let i of List" (click)="getSelected(i)">{{i[Configure.optionKey]}}</li>
+        <ul class="selectList ">
+            <li class="dropdown-item " *ngFor="let i of List " (click)="getSelected(i) ">{{i[Configure.optionKey]}}</li>
         </ul>
     </div>
 </div>
