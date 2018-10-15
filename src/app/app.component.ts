@@ -7,6 +7,7 @@ import { Http } from '@angular/http';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  selectedValue: Array<any> = [];
   constructor(public http: Http) {
     this.getCountryList();
   }
@@ -17,10 +18,9 @@ export class AppComponent {
     search: true,
     limitTo: 5
   }
-  SelectedValue: any;
 
   show() {
-    console.log(this.SelectedValue);
+    console.log(this.selectedValue);
   }
   onSelection($event) {
     console.log("Event :", $event);

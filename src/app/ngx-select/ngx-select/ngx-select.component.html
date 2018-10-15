@@ -2,6 +2,7 @@
     <button class="btn btn-block selectBox dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
    {{(SelectedValue.length == 0)?Configure.placeholder:SelectedValue[Configure.optionKey]}}
   </button>
+    <!-- <input type="text" class="form-control" [value]="value" (input)="name=$event.target.value"> -->
     <div class="dropdown-menu selectMenu" aria-labelledby="dropdownMenuButton">
         <div class="searchBox" *ngIf="Configure.search">
             <input type="text" class="form-control" (input)="search($event.target.value)" placeholder="{{Configure.searchPlaceholder}}" style=" border: none; ">

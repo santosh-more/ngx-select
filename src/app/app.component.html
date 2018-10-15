@@ -1,7 +1,6 @@
 <div class="row">
     <div class="col-6">
-        <ngx-select-dp [List]="List" [Config]="Config" (onSelection)="onSelection($event)"></ngx-select-dp>
-        <!-- [(SelectedValue)]="SelectedValue" -->
+        <ngx-select-dp [List]="List" [Config]="Config" (onSelection)="onSelection($event)" [(selectedItem)]="selectedValue"></ngx-select-dp>
         <hr>
         <button class="btn" (click)="show()">show</button>
     </div>

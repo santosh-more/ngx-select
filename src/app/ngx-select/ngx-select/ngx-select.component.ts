@@ -8,20 +8,22 @@ import * as _ from "underscore";
 export class NgxSelectComponent implements OnInit {
   @Input() List: Array<any> = [];
   @Input() Config: any = {};
+  // value: any = '';
+  value = [];
+  @Input() get selectedItem() { return this.value; }
   // static sortOrder=enum
   Configure: any = {
     optionKey: '',
     placeholder: 'Select',
-    searchPlaceholder:'Search',
+    searchPlaceholder: 'Search',
     search: true,
     limitTo: -1,
     // sortOrder:
   }
-  @Output() SelectedValue: Array<any> = [];
   @Output() onSelection = new EventEmitter<Array<any>>();
   ListBackup: Array<any>;
-  constructor() {
-  }
+  SelectedValue: Array<any> = [];
+  constructor() { }
 
   ngOnInit() {
     Object.assign(this.Configure, this.Config);
@@ -30,8 +32,13 @@ export class NgxSelectComponent implements OnInit {
       this.List = this.sliceIfLimit(this.List);
     }, 0);
   }
+  set selectedItem(val) {
+    console.log(val);
+    this.value = [val];
+    this.onSelection.emit([val]);
+  }
   getSelected(i) {
-    this.SelectedValue = i;
+    this.value = [i];
     this.onSelection.emit([i]);
   }
   search(searchKey) {
