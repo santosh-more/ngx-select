@@ -1,11 +1,13 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import * as _ from "underscore";
 @Component({
   selector: 'ngx-select-dp',
   templateUrl: './ngx-select.component.html',
   styleUrls: ['./ngx-select.component.css']
 })
-export class NgxSelectComponent implements OnInit {
+export class NgxSelectComponent implements OnInit,AfterViewInit {
+
+  // @ViewChild('select-item');
   @Input() List: Array<any> = [];
   @Input() Config: any = {};
   // value: any = '';
@@ -20,10 +22,10 @@ export class NgxSelectComponent implements OnInit {
     limitTo: -1,
     // sortOrder:
   }
-  @Output() onSelection = new EventEmitter<Array<any>>();
+  @Output() selectedItemChange = new EventEmitter<Array<any>>();
   ListBackup: Array<any>;
   SelectedValue: Array<any> = [];
-  constructor() { }
+  constructor(private elRef: ElementRef) { }
 
   ngOnInit() {
     Object.assign(this.Configure, this.Config);
@@ -32,14 +34,18 @@ export class NgxSelectComponent implements OnInit {
       this.List = this.sliceIfLimit(this.List);
     }, 0);
   }
+  
+  ngAfterViewInit(){
+    const selectUl = document.getElementById('ngx-select-items');
+    console.log(selectUl);
+  }
   set selectedItem(val) {
-    console.log(val);
-    this.value = [val];
-    this.onSelection.emit([val]);
+    this.value = val;
   }
   getSelected(i) {
     this.value = [i];
-    this.onSelection.emit([i]);
+    this.SelectedValue = i;
+    this.selectedItemChange.emit([i]);
   }
   search(searchKey) {
     let filteredList;

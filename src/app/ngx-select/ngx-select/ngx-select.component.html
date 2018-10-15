@@ -1,15 +1,14 @@
 <div class="dropdown">
     <button class="btn btn-block selectBox dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-   {{(SelectedValue.length == 0)?Configure.placeholder:SelectedValue[Configure.optionKey]}}
+        {{(value.length == 0)?Configure.placeholder:value[0][Configure.optionKey]}}
   </button>
-    <!-- <input type="text" class="form-control" [value]="value" (input)="name=$event.target.value"> -->
     <div class="dropdown-menu selectMenu" aria-labelledby="dropdownMenuButton">
         <div class="searchBox" *ngIf="Configure.search">
             <input type="text" class="form-control" (input)="search($event.target.value)" placeholder="{{Configure.searchPlaceholder}}" style=" border: none; ">
             <hr style="margin: 0; ">
         </div>
-        <ul class="selectList ">
-            <li class="dropdown-item " *ngFor="let i of List " (click)="getSelected(i) ">{{i[Configure.optionKey]}}</li>
+        <ul class="selectList" id="ngx-select-items">
+            <li class="dropdown-item" [ngClass]="{'active':(value.length != 0)?(value[0][Configure.optionKey]==i[Configure.optionKey]):false}" *ngFor="let i of List " (click)="getSelected(i) ">{{i[Configure.optionKey]}}</li>
         </ul>
     </div>
 </div>

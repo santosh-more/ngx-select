@@ -7,7 +7,7 @@ import { Http } from '@angular/http';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  selectedValue: Array<any> = [];
+  selectedValue: Array<any> = [{name: "India", code: "IN"}];
   constructor(public http: Http) {
     this.getCountryList();
   }
@@ -16,7 +16,7 @@ export class AppComponent {
   Config: any = {
     optionKey: "name",
     search: true,
-    limitTo: 5
+    limitTo: 10
   }
 
   show() {
